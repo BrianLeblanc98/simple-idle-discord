@@ -1,0 +1,16 @@
+{
+  "name": "simple-idle-discord",
+  "version": "0.0.1",
+  "description": "Incredibley simple discord idle game, ONE COMMAND!",
+  "license": "GPL-3.0-or-later",
+  "author": "Brian LeBlanc",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env .",
+    "start:dev": "node --env-file=.env . dev"
+  },
+  "dependencies": {
+    "discord.js": "^14.25.1"
+  }
+}
