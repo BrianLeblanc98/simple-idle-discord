@@ -26,7 +26,7 @@ CLIENT_ID=
 DEV_GUILD_ID=
 ```
 
-Once `.env` is create and has the correct values:
+Once `.env` is created and has the correct values:
 ```
 npm i
 npm run start

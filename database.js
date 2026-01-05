@@ -9,7 +9,8 @@ export const User = sequelize.define(
 	{
 		userId: {
 			type: DataTypes.TEXT,
-			allowNull: false
+			allowNull: false,
+			primaryKey: true
 		},
 		currency: {
 			type: DataTypes.INTEGER,
@@ -24,6 +25,20 @@ export const User = sequelize.define(
 	}
 );
 
+/** Initialize the database */
 export async function dbInit() {
-    await sequelize.sync({ force: true }); // TODO: Remove force: true
+    await sequelize.sync(); // TODO: Remove force: true
+}
+
+/** Returns user object based on id, creates new entry if they don't exist */
+export async function dbGetUser(userId) {
+	let user = await User.findOne({ where: { userId }});
+	if (!user) user = await User.create({ userId });
+	return user;
+}
+
+/** Add currency to user */
+export async function dbAddCurrency(user, amount) {
+	await user.increment('currency', { by: amount });
+	return user.reload();
 }
